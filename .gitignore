@@ -1,0 +1,8 @@
+*.pyc
+venv
+*.swp
+db.sqlite3
+*.DS_Store
+dump.rdb
+*.db
+*~
