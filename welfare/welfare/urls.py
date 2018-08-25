@@ -19,6 +19,9 @@ from clients import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', views.index, name='index'),
-    path('', views.index, name='index'),
+    path('signin/', views.signin_page),
+    path('signup/', views.signup_page),
+    # TODO:
+    # path('', views.home_page),
+    # path('forgot_pwd/', views.forgot_pwd_page),
 ]
