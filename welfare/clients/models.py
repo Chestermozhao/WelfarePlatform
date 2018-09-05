@@ -9,9 +9,9 @@ from pymongo import ReturnDocument
 from django.db import models
 
 # Client imports
-from utils.mongo import goods
-from utils.mongo import organization
-from utils.mongo import user
+from clients.utils.mongo import goods
+from clients.utils.mongo import organization
+from clients.utils.mongo import user
 
 
 class Goods:

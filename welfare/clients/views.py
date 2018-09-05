@@ -6,9 +6,8 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.shortcuts import render_to_response
-
 # Client imports
-from utils.auth import login_required
+from clients.utils.auth import login_required
 
 
 def signin_page(request):

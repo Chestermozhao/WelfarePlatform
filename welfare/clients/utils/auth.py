@@ -7,7 +7,7 @@ from functools import wraps
 from django.http import HttpResponseRedirect
 
 # Client imports
-from welfare.utils.mongo import user
+from clients.utils.mongo import user
 
 
 def login_required(func):
