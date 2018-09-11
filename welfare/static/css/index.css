@@ -1,0 +1,64 @@
+#signup {
+    margin: auto auto;
+}
+
+table {
+    width: 75%;
+    border-radius: 20%;
+    border: 1px;
+    margin-top: 5px;
+}
+
+#caution {
+    color: salmon;
+    font-size: 10px;
+    display: none;
+}
+
+td {
+    font-size: 5px;
+}
+
+#pwd {
+    width: 75%;
+}
+
+tr {
+    border-radius: 20%;
+    height: 5px;
+    border-color: beige;
+}
+
+#btn {
+    margin: 0 auto;
+}
+
+#emailtype {
+    color: salmon;
+    font-size: 10px;
+    display: none;
+}
+
+#exampleInputEmail1 {
+    width: 75%;
+}
+
+.error {
+    position: relative;
+    animation: shake .1s linear;
+    animation-iteration-count: 3;
+}
+
+@keyframes shake {
+    0% {
+        left: -0.5px;
+    }
+
+    100% {
+        right: -0.5px;
+    }
+}
+
+.displaynone {
+    display: none;
+}
