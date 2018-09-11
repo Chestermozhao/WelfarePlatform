@@ -13,7 +13,6 @@ from clients.utils.mongo import goods
 from clients.utils.mongo import organization
 from clients.utils.mongo import user
 
-
 class Goods:
     def __init__(self, obj):
         self._obj = obj
@@ -80,3 +79,18 @@ class Goods:
         return goods.count(query)
 
     # TODO: Add create_at: arrow.utcnow().datetime
+
+class Signup:
+    
+    def insert(self, signup_data):
+        inserted = user.insert_one(signup_data)
+        print(inserted)
+
+    @classmethod
+    def query(cls, index={}):
+        if not index:
+            return None
+        result = list(user.find(index))
+        if result:
+            return result
+        return None
