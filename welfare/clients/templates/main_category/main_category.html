@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>choose type</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="jumbotron height">
+        <!-- <h1 class="display-3">管理者介面</h1> -->
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="addbtn">Add New Item</a>
+        </p>
+        <hr class="my-4">
+        <p id="cardbox">
+        </p>
+
+    </div>
+    <div class="modal" id="modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add new type</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="crossmodal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label col-form-label-sm" for="inputSmall">物資類型</label>
+                        <input class="form-control form-control-sm" type="text" placeholder="請輸入項目名稱" id="inputSmall">
+                        <div style="margin-top: 10px">
+                            <p>background-image</p>
+                            <fieldset class="form-group" id="formofimg">
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="chooseimg" id="optionsRadios1"
+                                            value="option1" checked="">
+                                        <img src="./photos/food.jpg" alt="food" class="photosize"></img>
+                                    </label>
+                                </div>
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="chooseimg" id="optionsRadios2"
+                                            value="option2">
+                                        <img src="./photos/goods.jpeg" alt="food" class="photosize">
+                                    </label>
+                                </div>
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="chooseimg" id="optionsRadios3"
+                                            value="option3">
+                                        <img src="./photos/shampoo.jpeg" alt="food" class="photosize">
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="savechange">Save changes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closemodal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="index.js"></script>
+
+
+
+</body>
