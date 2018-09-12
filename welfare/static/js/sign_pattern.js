@@ -1,3 +1,4 @@
+window.onload = function(){
 function checkemail(email) {
     emailRule = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z]+$/;
 
@@ -47,3 +48,4 @@ function checkpwd(pwd) {
       e.preventDefault();
     }
   }
+}
