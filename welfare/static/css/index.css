@@ -21,6 +21,7 @@ td {
 
 #pwd {
     width: 75%;
+    margin:0 auto;
 }
 
 tr {
@@ -41,6 +42,7 @@ tr {
 
 #exampleInputEmail1 {
     width: 75%;
+    margin:0 auto;
 }
 
 .error {
