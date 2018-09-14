@@ -21,6 +21,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('signin/', views.signin_page),
     path('signup/', views.signup_page),
+    path('main_category/', views.main_category),
     # TODO:
     # path('', views.home_page),
     # path('forgot_pwd/', views.forgot_pwd_page),

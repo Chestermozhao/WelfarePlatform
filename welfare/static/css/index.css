@@ -45,6 +45,11 @@ tr {
     margin:0 auto;
 }
 
+#exampleInputUsername {
+    width: 75%;
+    margin:0 auto;
+}
+
 .error {
     position: relative;
     animation: shake .1s linear;
