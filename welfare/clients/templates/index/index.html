@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>practice</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/practice.css" />
+    {% load staticfiles %}
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/main.css' %}" />
 </head>
 
 <body>
@@ -31,7 +32,7 @@
                 <a href="#">產品介紹</a>
             </li>
             <li>
-                <a href="#">物資管理</a>
+                <a onclick="window.location.href='/main_category'">物資管理</a>
             </li>
             <li>
                 <a href="#">技術研發</a>
@@ -51,14 +52,13 @@
         </ul>
     </div>
     <div id="banner">
-        <img src="css/img/helpeachother.jpg" alt="help" width="990px" height="464px">
+        <img src="{% static '/css/img/index/helpeachother.jpg' %}" alt="help" width="990px" height="464px">
     </div>
     <div id="news">
         <div class="news-1">
             <div class="section1">
                 <h3>新聞資訊</h3>
                 <ul>
-                    <!-- 把li想成一個盒子，把布局分成左邊跟右邊 -->
                     <li>
                         <a href="#">噓聲迎日vs.掌聲送強烈對比</a>
 
@@ -103,19 +103,19 @@
             <h3>服務項目</h3>
             <div class="content">
                 <div class="smallbox">
-                    <img src="css/img/welfare.jpg" alt="women" width="210px" height="160">
+                    <img src="{% static 'css/img/index/welfare.jpg' %}" alt="women" width="210px" height="160">
                     <a href="#">社會福利資源整合：能快速知道所擁有的福利資格</a>
                 </div>
                 <div class="smallbox" style="margin: 0 40px">
-                    <img src="css/img/group.jpeg" alt="group" width="210px" height="160">
+                    <img src="{% static 'css/img/index/group.jpeg' %}" alt="group" width="210px" height="160">
                     <a href="#">團體記錄管理：提供團體帶領者系統化的資訊管理</a>
                 </div>
                 <div class="smallbox">
-                    <img src="css/img/consulation.png" alt="consulation">
+                    <img src="{% static 'css/img/index/consulation.png' %}" alt="consulation">
                     <a href="#">個案紀錄管理：系統化的保存個案紀錄，加強個資安全問題</a>
                 </div>
                 <div class="smallbox" style="margin-left: 40px">
-                    <img src="css/img/foodmanage.jpg" alt="foodmanage">
+                    <img src="{% static 'css/img/index/foodmanage.jpg' %}" alt="foodmanage">
                     <a href="#">物資效期管理：能有效管理物資，將物品送到符合需求的個案</a>
                 </div>
             </div>
@@ -191,7 +191,7 @@
             </div>
             <div class="view3">
                 <h3>工作據點</h3>
-                <img src="css/img/map.png" alt="taiwan" width="160px" height="180px">
+                <img src="{% static 'css/img/index/map.png' %}" alt="taiwan" width="160px" height="180px">
             </div>
         </div>
         <div class="section2">
@@ -204,23 +204,23 @@
             <div class="class2">
                 <p>COPYRIGHT&nbsp;&copy;&nbsp;還沒想到名字集團&nbsp;版權所有</p>
                 <a href="#">
-                    <img src="css/img/fb.png" alt="fb" width="30px" height="30px">
+                    <img src="{% static 'css/img/index/fb.png' %}" alt="fb" width="30px" height="30px">
                 </a>&nbsp;
                 <a href="#">
-                    <img src="css/img/line.png" alt="fb" width="30px" height="30px">
+                    <img src="{% static 'css/img/index/line.png' %}" alt="fb" width="30px" height="30px">
                 </a>
                 <a href="#">
-                    <img src="css/img/qq.png" alt="fb" width="30px" height="30px">
+                    <img src="{% static 'css/img/index/qq.png' %}" alt="fb" width="30px" height="30px">
                 </a>
                 <a href="#">
-                    <img src="css/img/instagram.jpg" alt="fb" width="30px" height="30px">
+                    <img src="{% static 'css/img/index/instagram.jpg' %}" alt="fb" width="30px" height="30px">
                 </a>
             </div>
         </div>
 
     </div>
 
-    <script src="js/practice.js"></script>
+    <!--<script src="js/practice.js"></script>-->
 </body>
 
 </html>

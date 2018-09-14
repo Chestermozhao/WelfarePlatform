@@ -17,7 +17,7 @@ def signin_page(request):
         sign_data = Signup.query({"account_mail":email})
         print(sign_data)
         if password == sign_data[0]["password"]:
-            return HttpResponse("hello world index!!")
+            return render_to_response("index/index.html")
     return render(request, "sign/sign_in.html", locals())
 
 def signup_page(request):
@@ -35,6 +35,9 @@ def signup_page(request):
                 return HttpResponse("email is registered!")
         return HttpResponse("there is comething wrong in ur data!")
     return render(request,"sign/sign_up.html", locals())
+
+def main_category(request):
+    return render_to_response('main_category/main_category.html')
 
 def check_signup_content(request):
     checked = True
