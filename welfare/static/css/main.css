@@ -1,116 +1,143 @@
-*{
+﻿* {
     margin: 0;
     padding: 0;
 }
 
-#header{
-    width:990px;
-    height:100px;
-    margin:0 auto;
-    background-color:white;  
- }
- 
- #header .logo{
-     width: 249px;
-     height: 70px;
-     background-color:white;
-     float: left;
-     margin: 10px 0 20px 10px;
-    }
- /* 這邊指的是a標籤的寬度，但是因為裡面加了一個很大的圖片進去，所以還是要設定好圖片的長寬 不然會壓縮到下面的區塊*/
-#header .search{
-    float:right;
-    width: 233px;
+#header {
+    width: 990px;
+    height: 100px;
+    margin: 0 auto;
+    background-color: white;
+}
+
+#header .logo {
+    width: 249px;
+    height: 70px;
+    background-color: white;
+    float: left;
+    margin: 10px 0 20px 10px;
+}
+
+/* 這邊指的是a標籤的寬度，但是因為裡面加了一個很大的圖片進去，所以還是要設定好圖片的長寬 不然會壓縮到下面的區塊*/
+#header .search {
+    float: right;
+    width: 350px;
     height: 30px;
     background-color: red;
     margin: 39px 20px 31px 0;
     border: none;
 }
-#header .search .text{
+
+#header .search .text {
     height: 30px;
     width: 180px;
     padding-left: 16px;
-    border: none;    
-    background-color:rgb(221, 221, 221);
+    border: none;
+    background-color: rgb(221, 221, 221);
     float: left;
 }
 
-#header .search .btn{
+#header .search .btn {
     width: 37px;
-    height:30px;
-    float:left;
-    background-image: url(https://cdn4.iconfinder.com/data/icons/marketing-32/512/Search-512.png);
-    background-size:37px 30px;
+    height: 30px;
+    float: left;
+    background-image: url(https: //cdn4.iconfinder.com/data/icons/marketing-32/512/Search-512.png);
+        background-size:37px 30px;
     border: none;
 
 }
 
+#header .search .login {
+    width: 60px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: salmon;
+    margin-left: 10px;
+    border-style: none;
+    color: white;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
- #nav{
-    width:990px;
-    height:60px;
-    margin:0 auto;
-    background-color:salmon;  
-    border:none;
- }
-#nav ul .last{
+#header .search .login:hover {
+    background-color: #f06261;
+    transition: 0.3s;
+    transform: scale(1.1);
+}
+
+
+
+
+#nav {
+    width: 990px;
+    height: 60px;
+    margin: 0 auto;
+    background-color: salmon;
+    border: none;
+}
+
+#nav ul .last {
     border-right: none;
 }
- #nav ul{
-     padding-left: 22px;
- }
- #nav ul li{
-     float: left;
-     list-style: none;
-     width: 120px;
-     height:60px;
-     text-align: center;
-     border-right: 1px solid white;
-     line-height: 60px;
-     background-color: salmon;
-     font-size: 13px;
- }
- #nav ul li a{
-     text-decoration: none;
-     color:white;
- }
 
- #banner{
-    width:990px;
-    height:464px;
-    margin:0 auto;
-    background-color:yellow;  
- }
- 
- #news{
-    width:990px;
-    height:547px;
-    margin:0 auto;
- 
- }
+#nav ul {
+    padding-left: 22px;
+}
 
-#news .news-1{
-     width:990px;
-     height: 243px;
-     background-color:white;
- }
- 
-#news .news-1 .section1{
+#nav ul li {
+    float: left;
+    list-style: none;
+    width: 120px;
+    height: 60px;
+    text-align: center;
+    border-right: 1px solid white;
+    line-height: 60px;
+    background-color: salmon;
+    font-size: 13px;
+}
+
+#nav ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+#banner {
+    width: 990px;
+    height: 464px;
+    margin: 0 auto;
+    background-color: yellow;
+}
+
+#news {
+    width: 990px;
+    height: 547px;
+    margin: 0 auto;
+
+}
+
+#news .news-1 {
+    width: 990px;
+    height: 243px;
+    background-color: white;
+}
+
+#news .news-1 .section1 {
     width: 454px;
     height: 243px;
-    background-color:white;
+    background-color: white;
     float: left;
     padding-left: 20px;
     padding-right: 26px;
 }
 
-#news .news-1 .section1 h3{
+#news .news-1 .section1 h3 {
     height: 83px;
     line-height: 83px;
     font-size: 19px;
 }
+
 /* 可以想像成一個盒子，這邊代表content的高度 */
-#news .news-1 .section1 ul li{
+#news .news-1 .section1 ul li {
     list-style-position: inside;
     color: gray;
     /* 讓點可以跑到裡面去 */
@@ -119,20 +146,23 @@
     width: 454px;
 }
 
-#news .news-1 .section1 ul li .right-date{
+#news .news-1 .section1 ul li .right-date {
     float: right;
 }
-#news .news-1 .section1 ul li a{
+
+#news .news-1 .section1 ul li a {
     text-decoration: none;
-    color:#5c5c5c;
+    color: #5c5c5c;
 }
-#news .news-1 .section2{
+
+#news .news-1 .section2 {
     width: 242px;
     height: 243px;
-    background-color:white;
+    background-color: white;
     float: left;
 }
-#news .news-1 .section2 h3{
+
+#news .news-1 .section2 h3 {
     width: 200px;
     height: 90px;
     padding-left: 21px;
@@ -140,147 +170,161 @@
     line-height: 90px;
 
 }
-#news .news-1 .section2 p{
-    width:180px;
-    height:  70px;
+
+#news .news-1 .section2 p {
+    width: 180px;
+    height: 70px;
     padding-left: 21px;
     padding-right: 41px;
-    
+
 }
 
-#news .news-1 .section3{
+#news .news-1 .section3 {
     padding-left: 25px;
-    background-color:white;
-    background-image:url("img/standup.jpg"); 
-    background-repeat:no-repeat;
+    background-color: white;
+    background-image: url("img/standup.jpg");
+    background-repeat: no-repeat;
     background-position: right bottom;
     width: 223px;
-    height:243px;
+    height: 243px;
     float: left;
 }
 
-#news .news-2{
-    width:960px;
+#news .news-2 {
+    width: 960px;
     height: 240px;
-    padding:30px 15px 35px 15px;
+    padding: 30px 15px 35px 15px;
 }
-#news .news-2 h3{
+
+#news .news-2 h3 {
     height: 35px;
 }
 
-#news .news-2 .content{
+#news .news-2 .content {
     height: 204px;
 }
-#news .news-2 .content .smallbox{
+
+#news .news-2 .content .smallbox {
     width: 210px;
     height: 204px;
     float: left;
 }
-#news .news-2 .content .smallbox a{
+
+#news .news-2 .content .smallbox a {
     text-decoration: none;
-    color:black;
+    color: black;
     line-height: 22px;
     font-size: 13px;
 
 }
-#news .news-2 .content .smallbox img{
+
+#news .news-2 .content .smallbox img {
     width: 210px;
     height: 160px;
 }
- #footer{
-    width:990px;
-    height:332px;
-    background-color:white;   
+
+#footer {
+    width: 990px;
+    height: 332px;
+    background-color: white;
     margin: 0 auto;
- }
- 
-#footer .section1{
+}
+
+#footer .section1 {
     width: 950px;
     height: 220px;
-    background:#fdeae8;
+    background: #fdeae8;
     padding: 30px 20px 0 20px
 }
 
-#footer .section1 h3{
+#footer .section1 h3 {
     font-size: 16px;
     font-weight: normal;
     border-bottom: 1px solid #5c5c5c;
     padding-left: 12px;
     margin-bottom: 20px;
-    color:#595959;
+    color: #595959;
 }
 
-#footer .section1 .view1{
+#footer .section1 .view1 {
     width: 453px;
     height: 220px;
     background-color: #fdeae8;
     float: left;
 }
-#footer .section1 ul{
+
+#footer .section1 ul {
     float: left;
 }
 
-#footer .section1 ul li{
+#footer .section1 ul li {
     list-style: square inside;
     margin-bottom: 12px;
     margin-right: 60px;
 }
-#footer .section1 ul li a{
+
+#footer .section1 ul li a {
     text-decoration: none;
     font-size: 12px;
-    color:#595959;
+    color: #595959;
 
 }
 
-#footer .section1 .view2{
+#footer .section1 .view2 {
     width: 152px;
     height: 220px;
-    background-color:#fdeae8;
-    float:left;
+    background-color: #fdeae8;
+    float: left;
 
- }
+}
 
-#footer .section1 .view3{
+#footer .section1 .view3 {
     width: 245px;
     height: 220px;
-    background-color:#fdeae8;
+    background-color: #fdeae8;
     float: left;
 }
-#footer .section1 .view3 img{
+
+#footer .section1 .view3 img {
     padding-left: 30px;
 }
 
-#footer .section2{
+#footer .section2 {
     width: 950px;
     height: 82px;
-    background-color:white;
+    background-color: white;
     padding: 0 20px;
- }
- #footer .section2 .class1{
+}
+
+#footer .section2 .class1 {
     width: 268px;
     height: 57px;
-    background-color:white;
+    background-color: white;
     float: left;
     padding-top: 25px;
 }
-#footer .section2 .class1 a{
+
+#footer .section2 .class1 a {
     text-decoration: none;
     font-size: 13px;
-    color:#595959;
+    color: #595959;
     margin-top: 24px;
 }
-#footer .section2 .class2{
+
+#footer .section2 .class2 {
     width: 630px;
     height: 57px;
-    background-color:white;
+    background-color: white;
     float: right;
     font-size: 13px;
     padding-top: 25px;
-}  
-#footer .section2 .class2 p{
+}
+
+#footer .section2 .class2 p {
     float: right;
 }
-#footer .section2 .class2 a{
+
+#footer .section2 .class2 a {
     text-decoration: none;
-    float:right;
+    float: right;
 }
