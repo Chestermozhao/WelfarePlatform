@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>practice</title>
+    <title>Welfare | index</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" media="screen" href="{% static '/css/main.css' %}" />
@@ -22,9 +22,10 @@
             <input type="text" value="SEARCH..." class="text">
             <input type="button" class="btn">
         </div>
+        <button onclick="window.location.href='/logout'">Logout</button>
     </div>
     <div id="nav">
-        <ul>
+        <ul style="cursor:pointer">
             <li>
                 <a href="#">關於我們</a>
             </li>
