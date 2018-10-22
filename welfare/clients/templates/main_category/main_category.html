@@ -28,9 +28,9 @@
             <a class="btn btn-primary btn-lg" href="#" role="button" id="addbtn">Add New Item</a>
         </p>
         <hr class="my-4">
-        <p id="cardbox">
+        <div id="cardbox">
             {{main_cate_content|safe}}
-        </p>
+        </div>
 
     </div>
     <div class="modal" id="modal">
@@ -84,34 +84,4 @@
 
 
     <script src="/static/js/main_category.js"></script>
-    <!--<script>
-        $(document).ready(function(){
-            $("#savechange").click(function(){
-                var main_cate_img = document.querySelector('input[name="cate_img"]:checked').value;
-                var main_cate_content = document.querySelector('input[name="cate_content"]').value;
-                $.ajax({
-                    type : "GET",
-                    url : "/main_category?cate_text="+ main_cate_content +"&cate_img="+ main_cate_img,
-                    dataType : "json",
-                    contentType : "application/json;charset=UTF-8",
-                    complete : function(data){
-                        var pc_table = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpg","option3":"main_category_shampoo.jpg"};
-                        var img_src = "/static/css/img/main_category/" + pc_table[main_cate_img]
-                        cardbox.innerHTML += `<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
-                          <div class = "card-header"> ${main_cate_content}<button type = "button"
-                          class = "btn btn-outline-danger floatright">管理介面</button></div >
-                          <div class="card-body overflow">
-                            <img src = "${img_src}" alt = "" class = "cardsize photosize"></img>
-                          </div>
-                        </div>`
-                        main_cate_content = "";
-                        modal.classList.remove("display");
-                        alert("Update_success!")}
-                    });
-                });
-            });
-    </script> -->
-
-
-
 </body>
