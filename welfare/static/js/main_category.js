@@ -19,8 +19,7 @@ crossmodal.onclick = function () {
 function judgeRepeat(main_cate_content,content_arr){
     var checked = true
     for (var i = 0; i< content_arr.length; i++){
-        if (content_arr[i].innerText.slice(0,-5) == main_cate_content){
-            console.log(content_arr[i].innerText.slice(0,-5))
+        if (content_arr[i].innerText.slice(0,-5) == main_cate_content || content_arr[i].innerText.slice(0,-4) == main_cate_content){
             checked = false
             alert("存在相同名稱,請善用編輯功能喔！")
             }
@@ -39,7 +38,6 @@ $(document).ready(function(){
             var arr_content_box = document.getElementsByClassName("card-header")
             var checked = judgeRepeat(main_cate_content,arr_content_box)
             if (checked == true){
-                    console.log(checked)
                     $.ajax({
                         type : "GET",
                         url : "/main_category?cate_text="+ main_cate_content +"&cate_img="+ main_cate_img,
