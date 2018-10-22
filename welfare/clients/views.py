@@ -2,6 +2,8 @@
 
 # System imports
 import hashlib
+import smtplib
+from email.message import EmailMessage
 
 # Django imports
 from django.http import HttpResponse
@@ -20,7 +22,6 @@ def signin_page(request):
         sign_data = Signup.query({"account_mail":email})
         if password == sign_data[0]["password"]:
             request.session["user_id"] = sign_data[0]["account_username"]
-            print(request.session["user_id"])
             return render_to_response("index/index.html")
     return render(request, "sign/sign_in.html", locals())
 
@@ -43,11 +44,39 @@ def signup_page(request):
             sign_context = Signup()
             if not Signup.query({"account_mail":email}):
                 sign_context.insert(request_content)
-                return HttpResponse("succeed!") #need a template for succeed and 3 seconds later redirect
+                token = Signup.query({"account_mail":email})[0].get("_id")
+                result = mail_activate(email, token)
+                return HttpResponse("Please check your email!") #need a template for succeed and 3 seconds later redirect
             else:
                 return HttpResponse("email is registered!")
         return HttpResponse("there is something wrong in ur data!")
     return render(request,"sign/sign_up.html", locals())
+
+def mail_activate(user_email):
+    from config import GMAIL_ACCOUNT, GMAIL_PASSWORD
+    with open("mail_content.txt","r") as f:
+        # Create a text/plain message
+        msg = EmailMessage()
+        msg.set_content(f.read().format(token))
+
+    msg['Subject'] = "this is a activate mail!pleace click link and activate ur account!"
+    msg['From'] = GMAIL_ACCOUNT
+    msg['To'] = user_email
+    
+    try:
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
+        server.ehlo()
+        server.login(GMAIL_ACCOUNT, GMAIL_PASSWORD)
+        server.send_message(msg)
+        server.close()
+        return "success mail"
+
+    except Exception as e:
+        print(e) #this for catch error
+
+#TO DO
+#def activate_page(request):
+    
 
 @login_required
 def main_category(request):
@@ -104,6 +133,7 @@ def check_signup_content(request):
                 content[key] = secreted(value)
             else:
                 content[key] = value
+    content["activate_status"] = "no"
     return checked, content
 
 # TODO:
