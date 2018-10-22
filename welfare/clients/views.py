@@ -61,27 +61,27 @@ def main_category(request):
                 request_content[key] = value
         if checked == True and request_content != {}:
             request_content["username"] = request.session["user_id"]
-            index = {"cate_content":request_content["cate_text"]}
+            index = {"cate_text":request_content["cate_text"]}
             search_result = list(Goods.get_by(index))
             if search_result == []:
                 Goods.insert(request_content)
             else:
                 Goods.update(index, request_content)
-        else:
-            content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
-                          <div class = "card-header"> {0} <button type = "button"
-                          class = "btn btn-outline-danger floatright">管理介面</button></div >
-                          <div class="card-body overflow">
-                          <img src = "/static/css/img/main_category/{1}" alt = "" class = "cardsize photosize"></img>
-                          </div></div>"""
-            pc_route_name = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpeg","option3":"main_category_shampoo.jpeg"};
-            index = {"username":request.session["user_id"]}
-            search_results = list(Goods.get_by(index))
-            if search_results != []:
-                main_cate_content = ""
-                for result in search_results:
-                    main_cate_content += content_box.format(result["cate_text"],pc_route_name[result["cate_img"]])
-            return render(request, 'main_category/main_category.html', locals())
+        #else:
+        content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
+                      <div class = "card-header"> {0} <button type = "button"
+                      class = "btn btn-outline-danger floatright">管理介面</button></div >
+                      <div class="card-body overflow">
+                      <img src = "/static/css/img/main_category/{1}" alt = "" class = "cardsize photosize"></img>
+                      </div></div>"""
+        pc_route_name = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpeg","option3":"main_category_shampoo.jpeg"};
+        index = {"username":request.session["user_id"]}
+        search_results = list(Goods.get_by(index))
+        #if search_results != []:
+        main_cate_content = ""
+        for result in search_results:
+            main_cate_content += content_box.format(result["cate_text"],pc_route_name[result["cate_img"]])
+        return render(request, 'main_category/main_category.html', locals())
     return render(request,'main_category/main_category.html',locals())
 
 def secreted(password):

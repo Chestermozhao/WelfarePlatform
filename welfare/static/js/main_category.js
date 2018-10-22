@@ -1,7 +1,7 @@
 var addbtn = document.getElementById("addbtn");
+var cardbox = document.getElementById("cardbox");
 var modal = document.getElementById("modal");
 var savebtn = document.getElementById("savechange");
-var cardbox = document.getElementById("cardbox");
 var image = document.getElementsByTagName("img");
 var closemodal = document.getElementById("closemodal");
 var crossmodal = document.getElementById("crossmodal");
@@ -16,6 +16,18 @@ crossmodal.onclick = function () {
     modal.classList.remove("display");
 }
 
+function judgeRepeat(main_cate_content,content_arr){
+    var checked = true
+    for (var i = 0; i< content_arr.length; i++){
+        if (content_arr[i].innerText.slice(0,-5) == main_cate_content){
+            console.log(content_arr[i].innerText.slice(0,-5))
+            checked = false
+            alert("存在相同名稱,請善用編輯功能喔！")
+            }
+        }
+        return checked
+    }
+
 $(document).ready(function(){
     savebtn.onclick = function () {
         var main_cate_img = document.querySelector('input[name="cate_img"]:checked').value;
@@ -24,32 +36,34 @@ $(document).ready(function(){
         if (main_cate_content == "") {
             alert("請確實輸入")
         } else {
-            $.ajax({
-                type : "GET",
-                url : "/main_category?cate_text="+ main_cate_content +"&cate_img="+ main_cate_img,
-                dataType : "json",
-                contentType : "application/json;charset=UTF-8",
-                complete : function(data){
-                    var imgform = document.getElementsByName("cate_img");
-                    //console.log(imgform[0].nextElementSibling.src);
-                    for (var i = 0; i < imgform.length; i++) {
-                        if (imgform[i].checked) {
-                            var bgimage = imgform[i].nextElementSibling.src;
-                        }
+            var arr_content_box = document.getElementsByClassName("card-header")
+            var checked = judgeRepeat(main_cate_content,arr_content_box)
+            if (checked == true){
+                    console.log(checked)
+                    $.ajax({
+                        type : "GET",
+                        url : "/main_category?cate_text="+ main_cate_content +"&cate_img="+ main_cate_img,
+                        dataType : "json",
+                        contentType : "application/json;charset=UTF-8",
+                        complete : function(data){
+                            var imgform = document.getElementsByName("cate_img");
+                            for (var i = 0; i < imgform.length; i++) {
+                                if (imgform[i].checked) {
+                                    var bgimage = imgform[i].nextElementSibling.src;
+                                }
+                            }
+                            $("#cate_content").val("");
+                            cardbox.innerHTML += `<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
+                                                  <div class = "card-header"> ${main_cate_content}<button type = "button"
+                                                  class = "btn btn-outline-danger floatright">管理介面</button></div>
+                                                  <div class="card-body overflow">
+                                                  <img src = "${bgimage}" alt = "" class = "cardsize photosize"></img>
+                                                  </div>
+                                                  </div>`
+                            modal.classList.remove("display");
                     }
-                    cardbox.innerHTML += `<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
-              <div class = "card-header"> ${main_cate_content}<button type = "button"
-              class = "btn btn-outline-danger floatright">管理介面</button></div >
-              <div class="card-body overflow">
-                <img src = "${bgimage}" alt = "" class = "cardsize photosize"></img>
-              </div>
-            </div>`
-                    main_cate_content.value = "";
-                    modal.classList.remove("display");
-            }
-          })
+             })
+           }
+         }
        }
-     }
-   })
-
-// < p class = "card-text" ></p >
+     })
