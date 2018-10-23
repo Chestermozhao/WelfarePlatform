@@ -24,6 +24,7 @@ urlpatterns = [
     path('logout/', views.logout),
     path('index/', views.index),
     path('main_category/', views.main_category),
+    path('goods_table/', views.goods_table),
     # TODO:
     # path('', views.home_page),
     # path('forgot_pwd/', views.forgot_pwd_page),

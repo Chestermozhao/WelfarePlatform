@@ -5,12 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Social Welfare | Platform</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
         crossorigin="anonymous">
-    <link rel="stylesheet" href="index.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 
 <body>
@@ -33,7 +34,6 @@
                         <div class="carousel-inner">
                             <div class="carousel-item active">
                                 <div class="boxShadow"></div>
-                                <!-- <p style="">hello</p> -->
                                 <img class="d-block w-100" src="https://images.pexels.com/photos/347140/pexels-photo-347140.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
                                     alt="First slide" id="pictureRun">
                             </div>
@@ -64,7 +64,7 @@
                 <div class="col-10 d-flex justify-content-around serviceIcons ml-1 flex-wrap">
                     <div class="serviceIcon">
                         <div class="iconPicture"><i class="far fa-lemon"></i></div>
-                        <p class="iconIntro">Resource</p>
+                        <p id="resource" onclick="window.location.href='/main_category'" class="iconIntro">Resource</p>
                     </div>
                     <div class="serviceIcon">
                         <div class="iconPicture"><i class="far fa-handshake"></i></div>
@@ -129,7 +129,7 @@
     </div>
 
 
-    <script src="./index.js"></script>
+    <script src="/static/js/index.js"></script>
 </body>
 
 </html>
