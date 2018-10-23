@@ -1,71 +1,126 @@
-#signup {
-    margin: auto auto;
+* {
+	padding: 0px;
+	margin: 0px;
 }
 
-table {
-    width: 75%;
-    border-radius: 20%;
-    border: 1px;
-    margin-top: 5px;
+/* 跟header有關的 */
+.header .headerNavbar {
+	color: white;
+	width: 60%;
+	/* height: 30%; */
+	position: absolute;
+	top: 25%;
+	left: 0;
+	right: 0;
+	z-index: 2000;
+	margin: 0 auto;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+
 }
 
-#caution {
-    color: salmon;
-    font-size: 10px;
-    display: none;
+
+.header .headerTopic {
+	width: 50%;
+	color: white;
+	/* width: 60%; */
+	/* height: 30%; */
+	position: absolute;
+	top: 45%;
+	left: 0;
+	right: 0;
+	z-index: 3000;
+	margin: 0 auto;
+	text-align: center;
+	font-size: 50px;
 }
 
-td {
-    font-size: 5px;
+.navbarContent {
+	cursor: pointer;
+	transition: 0.5s;
 }
 
-#pwd {
-    width: 75%;
-    margin:0 auto;
+.navbarContent:hover {
+	border: 3px white solid;
+	transform: scale(1.1);
 }
 
-tr {
-    border-radius: 20%;
-    height: 5px;
-    border-color: beige;
+.header .boxShadow {
+	width: 100%;
+	height: 300px;
+	position: absolute;
+	top: 0;
+	z-index: 1000;
+	background-color: rgba(0, 0, 0, 0.3);
 }
 
-#btn {
-    margin: 0 auto;
+.header img {
+	height: 300px;
 }
 
-#emailtype {
-    color: salmon;
-    font-size: 10px;
-    display: none;
+.news {
+	position: relative;
 }
 
-#exampleInputEmail1 {
-    width: 75%;
-    margin:0 auto;
+
+.news .newsBg {
+	width: 100%;
+	height: 300px;
+	z-index: 10;
 }
 
-#exampleInputUsername {
-    width: 75%;
-    margin:0 auto;
+
+.news .serviceIcons {
+	z-index: 1000;
+	position: absolute;
+	top: 30%;
 }
 
-.error {
-    position: relative;
-    animation: shake .1s linear;
-    animation-iteration-count: 3;
+.news .serviceIcons .serviceIcon .iconPicture {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	background-color: gray;
+	text-align: center;
+	line-height: 60px;
+	font-size: 30px;
+	color: white;
 }
 
-@keyframes shake {
-    0% {
-        left: -0.5px;
-    }
-
-    100% {
-        right: -0.5px;
-    }
+.news .serviceIcons .serviceIcon .iconIntro {
+	text-align: center;
+	margin-top: 10px;
 }
 
-.displaynone {
-    display: none;
+.story {
+	width: 100%;
+	height: 250px;
+}
+
+.story .leftSide {
+	height: 250px;
+	display: inline-block;
+	width: 50%;
+}
+
+.story .leftPic {
+	width: 100%;
+	height: 250px;
+}
+
+
+.story .rightSide {
+	width: 50%;
+	display: inline-block;
+	height: 250px;
+}
+
+.story .rightPic {
+	height: 125px;
+	width: 50%;
+}
+
+#resource {
+    cursor:pointer;
 }

@@ -22,12 +22,12 @@ def signin_page(request):
         sign_data = Signup.query({"account_mail":email})
         if password == sign_data[0]["password"]:
             request.session["user_id"] = sign_data[0]["account_username"]
-            return render_to_response("index/index.html")
+            return render_to_response("layout/index/index_base.html")
     return render(request, "sign/sign_in.html", locals())
 
 @login_required
 def index(request):
-    return render_to_response("index/index.html")
+    return render_to_response("layout/index/index_base.html")
 
 def logout(request):
     if "user_id" in request.session:
@@ -99,8 +99,8 @@ def main_category(request):
         #else:
         content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
                       <div class = "card-header"> {0} <button type = "button"
-                      class = "btn btn-outline-danger floatright">管理介面</button></div >
-                      <div class="card-body overflow">
+                      class = "btn btn-outline-danger floatright" onclick="window.location.href='/goods_table'">
+                      管理介面</button></div><div class="card-body overflow">
                       <img src = "/static/css/img/main_category/{1}" alt = "" class = "cardsize photosize"></img>
                       </div></div>"""
         pc_route_name = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpeg","option3":"main_category_shampoo.jpeg"};
@@ -112,6 +112,11 @@ def main_category(request):
             main_cate_content += content_box.format(result["cate_text"],pc_route_name[result["cate_img"]])
         return render(request, 'main_category/main_category.html', locals())
     return render(request,'main_category/main_category.html',locals())
+
+def goods_table(request):
+    if request.method == "GET":
+        print(request.build_absolute_uri())
+        return render(request, 'goods_table/table.html', locals())
 
 def secreted(password):
     if password is None:

@@ -53,8 +53,9 @@ $(document).ready(function(){
                             $("#cate_content").val("");
                             cardbox.innerHTML += `<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
                                                   <div class = "card-header"> ${main_cate_content}<button type = "button"
-                                                  class = "btn btn-outline-danger floatright">管理介面</button></div>
-                                                  <div class="card-body overflow">
+                                                  class = "btn btn-outline-danger floatright"
+                                                  onclick="window.location.href='/goods_table'">
+                                                  管理介面</button></div><div class="card-body overflow">
                                                   <img src = "${bgimage}" alt = "" class = "cardsize photosize"></img>
                                                   </div>
                                                   </div>`
