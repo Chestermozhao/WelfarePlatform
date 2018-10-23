@@ -44,3 +44,12 @@
 .floatright {
     float: right;
 }
+
+.d-inline-block {
+    width: 45%;
+}
+
+
+.disappear {
+    display: none !important
+}
