@@ -98,8 +98,8 @@ def main_category(request):
                 Goods.update(index, request_content)
         #else:
         content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
-                      <div class = "card-header"> {0} <button type = "button"
-                      class = "btn btn-outline-danger floatright" onclick="window.location.href='/goods_table'">
+                      <div class = "card-header"> {0}<i class = "fas fa-edit"></i><i class="fas fa-trash-alt"></i>
+                      <button type = "button" class = "btn btn-outline-danger floatright" onclick="window.location.href='/goods_table'">
                       管理介面</button></div><div class="card-body overflow">
                       <img src = "/static/css/img/main_category/{1}" alt = "" class = "cardsize photosize"></img>
                       </div></div>"""
