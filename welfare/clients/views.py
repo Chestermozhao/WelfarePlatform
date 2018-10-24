@@ -4,6 +4,7 @@
 import hashlib
 import smtplib
 from email.message import EmailMessage
+from bson.objectid import ObjectId
 
 # Django imports
 from django.http import HttpResponse
@@ -74,9 +75,20 @@ def mail_activate(user_email):
     except Exception as e:
         print(e) #this for catch error
 
-#TO DO
-#def activate_page(request):
-    
+def activate_page(request):
+    print(request.build_absolute_uri())
+    #token = request.build_absolute_uri().split("/")[-2]
+    token = "123"
+    try:
+        index = {"_id":ObjectId(token)}
+        query_result = Signup.query(index)
+        if query_result:
+            Signup.update(index, {"activate_status":"yes"})
+            return HttpResponse("activate successfully!")
+        else:
+            return HttpResponse("please check your email!")
+    except:
+        return HttpResponse("PLZ check ur email!")
 
 @login_required
 def main_category(request):
@@ -96,7 +108,6 @@ def main_category(request):
                 Goods.insert(request_content)
             else:
                 Goods.update(index, request_content)
-        #else:
         content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
                       <div class = "card-header"> {0}<i class = "fas fa-edit"></i><i class="fas fa-trash-alt"></i>
                       <button type = "button" class = "btn btn-outline-danger floatright" onclick="window.location.href='/goods_table'">
@@ -106,7 +117,6 @@ def main_category(request):
         pc_route_name = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpeg","option3":"main_category_shampoo.jpeg"};
         index = {"username":request.session["user_id"]}
         search_results = list(Goods.get_by(index))
-        #if search_results != []:
         main_cate_content = ""
         for result in search_results:
             main_cate_content += content_box.format(result["cate_text"],pc_route_name[result["cate_img"]])
@@ -115,7 +125,6 @@ def main_category(request):
 
 def goods_table(request):
     if request.method == "GET":
-        print(request.build_absolute_uri())
         return render(request, 'goods_table/table.html', locals())
 
 def secreted(password):
