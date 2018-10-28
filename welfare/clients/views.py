@@ -78,11 +78,9 @@ def mail_activate(user_email,token):
 
 def activate_page(request,token):
     #print(request.build_absolute_uri())
-    print("token=",token)
     try:
         index = {"_id":ObjectId(token)}
         query_result = Signup.query(index)
-        print("##",query_result)
         if query_result:
             Signup.update(index, {"activate_status": "yes"})
             return HttpResponse("activate successfully!")
@@ -152,7 +150,3 @@ def check_signup_content(request):
     content["activate_status"] = "no"
     return checked, content
 
-# TODO:
-# Add login_required at utils
-# @login_required
-# def index()
