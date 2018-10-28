@@ -101,3 +101,11 @@ class Signup:
         if result:
             return result
         return None
+
+    @classmethod
+    def update(cls, index, data):
+        result = user.find_one_and_update(
+            index, {"$set": data},
+            upsert=False,
+            return_document=ReturnDocument.AFTER
+        )

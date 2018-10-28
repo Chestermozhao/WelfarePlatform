@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 from clients import views
 
 urlpatterns = [
@@ -25,7 +26,7 @@ urlpatterns = [
     path('index/', views.index),
     path('main_category/', views.main_category),
     path('goods_table/', views.goods_table),
-    path('activate/', views.activate_page),
+    url(r'^activate/(\w+)/$', views.activate_page),
     # TODO:
     # path('', views.home_page),
     # path('forgot_pwd/', views.forgot_pwd_page),

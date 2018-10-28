@@ -20,9 +20,9 @@ def signin_page(request):
     if request.method == "POST":
         email = request.POST.get('account_mail',None)
         password = secreted(request.POST.get('password',None))
-        sign_data = Signup.query({"account_mail":email})
-        if password == sign_data[0]["password"]:
-            request.session["user_id"] = sign_data[0]["account_username"]
+        sign_data = Signup.query({"account_mail":email})[0]
+        if password == sign_data["password"] and sign_data["activate_status"] == "yes":
+            request.session["user_id"] = sign_data["account_username"]
             return render_to_response("layout/index/index_base.html")
     return render(request, "sign/sign_in.html", locals())
 
@@ -53,8 +53,9 @@ def signup_page(request):
         return HttpResponse("there is something wrong in ur data!")
     return render(request,"sign/sign_up.html", locals())
 
-def mail_activate(user_email):
+def mail_activate(user_email,token):
     from config import GMAIL_ACCOUNT, GMAIL_PASSWORD
+    print(token)
     with open("mail_content.txt","r") as f:
         # Create a text/plain message
         msg = EmailMessage()
@@ -75,19 +76,20 @@ def mail_activate(user_email):
     except Exception as e:
         print(e) #this for catch error
 
-def activate_page(request):
-    print(request.build_absolute_uri())
-    #token = request.build_absolute_uri().split("/")[-2]
-    token = "123"
+def activate_page(request,token):
+    #print(request.build_absolute_uri())
+    print("token=",token)
     try:
         index = {"_id":ObjectId(token)}
         query_result = Signup.query(index)
+        print("##",query_result)
         if query_result:
-            Signup.update(index, {"activate_status":"yes"})
+            Signup.update(index, {"activate_status": "yes"})
             return HttpResponse("activate successfully!")
         else:
             return HttpResponse("please check your email!")
-    except:
+    except Exception as e:
+        print(e)
         return HttpResponse("PLZ check ur email!")
 
 @login_required
