@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>goods content| Catagory Table</title>
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/goods_table.css' %}">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row mx-0">
+            <div class="col-12 px-0">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
+                        aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarColor03">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Home
+                                    <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Features</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Pricing</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About</a>
+                            </li>
+                        </ul>
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row mt-2 mx-0">
+            <div class="col-12 mx-1">
+                <h2>物資管理</h2>
+            </div>
+        </div>
+        <div class="row mt-3 mx-0">
+            <div class="col-8 col-md-3">
+                <div class="form-group d-flex">
+                    <label for="exampleSelect1">物資</label>
+                    <select class="form-control w-75 ml-2" onchange="showOthers(this)">
+                        <!--以下的option都是我寫死為了測試是否成功 -->
+                        <option>衛生紙</option>
+                        <option>棉花棒</option>
+                        <option>生理食鹽水</option>
+                        <option>牙刷</option>
+                        <option>其他</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-8 col-md-3">
+                <div class="form-group" id="othersBox" style="display:none">
+                    <label class="col-form-label" for="inputDefault">其他</label>
+                    <input type="text" class="form-control w-75 ml-2" placeholder="請確實輸入其他" id="others">
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 mx-0">
+            <div class="col-8 col-md-3">
+                <div class="form-group d-flex">
+                    <label for="exampleSelect1">縣市</label>
+                    <select class="form-control w-75 ml-2">
+                        <option>台北市</option>
+                        <option>新北市</option>
+                        <option>桃園市</option>
+                        <option>新竹縣</option>
+                        <option>苗栗縣</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-8 col-md-3">
+                <div class="form-group d-flex">
+                    <label for="exampleSelect1">鄉鎮</label>
+                    <select class="form-control w-75 ml-2">
+                        <option>中和區</option>
+                        <option>永和區</option>
+                        <option>新店區</option>
+                        <option>三重區</option>
+                        <option>板橋區</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2 mx-0">
+            <div class="col-8 col-md-3">
+                <div class="form-group d-flex">
+                    <label class="col-form-label" for="inputDefault">效期</label>
+                    <input type="text" id="datepicker" class="form-control w-75 ml-2" placeholder="mm/dd/yy">
+                </div>
+            </div>
+            <div class="col-8 col-md-2">
+                <div class="form-group d-flex">
+                    <label class="col-form-label" for="inputDefault">提醒</label>
+                    <!-- Rounded switch -->
+                    <label class="switch ml-2">
+                        <input type="checkbox" id="reminder" onclick="showAlertDate(this)">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-8 col-md-3">
+                <div class="form-group" style="display: none" id="alertTime">
+                    <label for="exampleSelect1">時間</label>
+                    <select class="form-control w-75 ml-2" id="reminderTime">
+                        <option>三個月前</option>
+                        <option>半年前</option>
+                        <option>一個月前</option>
+                        <option>一年前</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-8 col-md-3">
+                <div class="form-group d-flex align-items-end">
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row mt-5 ml-3 mx-0">
+            <div class="col-4">
+                <button type="button" class="btn btn-outline-secondary addBtn">提交</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-5 mx-0">
+        <div class="tableBox">
+            <table class="table table-hover tableSetting">
+                <thead>
+                    <tr>
+                        <th scope="col">Type</th>
+                        <th scope="col">過期時間</th>
+                        <th scope="col">物品所在地</th>
+                        <th scope="col">多久前提醒</th>
+
+
+                    </tr>
+                </thead>
+                <tbody class="tableBody" id="tableBody">
+
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    </div>
+
+
+    <script src="/static/js/goods_table.js"></script>
+</body>
+
+</html>

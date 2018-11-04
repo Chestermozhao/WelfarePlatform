@@ -1,225 +1,105 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Catagory Table</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>choose type| main_category</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://bootswatch.com/4/minty/bootstrap.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-    <link rel="stylesheet" href="table.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/main_category.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="row mx-0">
-            <div class="col-12 px-0">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03"
-                        aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarColor03">
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home
-                                    <span class="sr-only">(current)</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">About</a>
-                            </li>
-                        </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="row mt-2 mx-0">
-            <div class="col-3 mx-1">
-                <h2>物資管理</h2>
-            </div>
-        </div>
-        <div class="row mt-3 mx-0">
-            <div class="col-3">
-                <div class="form-group d-flex">
-                    <label for="exampleSelect1">物資</label>
-                    <select class="form-control w-75 ml-2" id="exampleSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group d-flex">
-                    <label class="col-form-label" for="inputDefault">其他</label>
-                    <input type="text" class="form-control w-75 ml-2" placeholder="Default input" id="inputDefault">
-                </div>
-            </div>
-        </div>
-        <div class="row mt-2 mx-0">
-            <div class="col-3">
-                <div class="form-group d-flex">
-                    <label for="exampleSelect1">縣市</label>
-                    <select class="form-control w-75 ml-2" id="exampleSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group d-flex">
-                    <label for="exampleSelect1">鄉鎮區</label>
-                    <select class="form-control w-75 ml-2" id="exampleSelect1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        <div class="row mt-2 mx-0">
-            <div class="col-3">
-                <div class="form-group d-flex">
-                    <label class="col-form-label" for="inputDefault">效期</label>
-                    <input type="text" id="datepicker" class="form-control w-75 ml-2" placeholder="mm/dd/yy">
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-group d-flex">
-                    <label class="col-form-label" for="inputDefault">提醒</label>
-                    <!-- Rounded switch -->
-                    <label class="switch ml-2">
-                        <input type="checkbox">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            <div class="col-3">
-                <div class="form-group d-flex align-items-end">
-
-                </div>
-            </div>
-
-
+    <div class="jumbotron height">
+        <!-- <h1 class="display-3">管理者介面</h1> -->
+        <p class="lead">
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="addbtn">Add New Item</a>
+        </p>
+        <hr class="my-4">
+        <div id="cardbox">
+            {{main_cate_content|safe}}
         </div>
 
     </div>
-    </div>
-    </div>
-
-
-
-
-
-
-    <div class="row mt-5 ml-3 mx-0">
-        <div class="col-4">
-            <button type="button" class="btn btn-outline-secondary addBtn">提交</button>
-        </div>
-    </div>
-
-    <div class="row mt-5 mx-0">
-        <div class="tableBox">
-            <table class="table table-hover tableSetting">
-                <thead>
-                    <tr>
-                        <th scope="col">Type</th>
-                        <th scope="col">Suggest Recipient</th>
-                        <th scope="col">Expiration</th>
-                        <th scope="col">Note</th>
-                    </tr>
-                </thead>
-                <tbody class="tableBody">
-                    <tr class="table-active">
-                        <th scope="row">奶粉</th>
-                        <td>楊梅區莫先生</td>
-                        <td>2019/01/05</td>
-                        <td>莫先生家裡小孩很多</td>
-                    </tr>
-                    <tr class="table-danger">
-                        <th scope="row">洗髮精</th>
-                        <td>中和區許媽媽</td>
-                        <td>2018/11/1</td>
-                        <td>許媽媽要護色洗髮精</td>
-                    </tr>
-
-                </tbody>
-            </table>
-        </div>
-
-    </div>
-
-    <div class="modal">
+    <div class="modal" id="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add New Item</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title">Add new type</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="crossmodal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-
-
-
-
-
                 <div class="modal-body">
                     <div class="form-group">
-                        <label class="col-form-label col-form-label-sm" for="inputSmall">Type</label>
-                        <input class="form-control form-control-sm w-50" type="text">
-                        <label class="col-form-label col-form-label-sm" for="inputSmall">Suggest Recipient</label>
-                        <input class="form-control form-control-sm w-50" type="text">
-                        <label class="col-form-label col-form-label-sm" for="inputSmall">Expiration</label>
-                        <input type="text" id="datepicker" class="form-control form-control-sm w-50" placeholder="mm/dd/yy">
-                        <label class="col-form-label col-form-label-sm" for="inputSmall">Note</label>
-                        <input class="form-control form-control-sm w-50" type="text">
+                        <div class="form-group d-inline-block">
+                            <label for="exampleSelect1">Example select</label>
+                            <select class="form-control selectType w-100" onchange="otherBarAppear()" id="exampleSelect1">
+                                <option>日用品</option>
+                                <option>食品</option>
+                                <option>衣物</option>
+                                <option>家具</option>
+                                <option>管罐</option>
+                                <option>輔具</option>
+                                <option>其他</option>
+
+                            </select>
+                        </div>
+                        <div class="form-group d-inline-block ml-2 disappear" id="otherInput">
+                            <input type="text" class="form-control" placeholder="請輸入其他" id="inputDefault">
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <p>background-image</p>
+                            <fieldset class="form-group" id="formofimg">
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="cate_img" id="optionsRadios1"
+                                            value="option1" checked="">
+                                        <img src="{% static 'css/img/main_category/main_category_food.jpg' %}" alt="food"
+                                            class="photosize"></img>
+                                    </label>
+                                </div>
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="cate_img" id="optionsRadios2"
+                                            value="option2">
+                                        <img src="{% static 'css/img/main_category/main_category_goods.jpeg' %}" alt="food"
+                                            class="photosize">
+                                    </label>
+                                </div>
+                                <div class="form-check float">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="cate_img" id="optionsRadios3"
+                                            value="option3">
+                                        <img src="{% static 'css/img/main_category/main_category_shampoo.jpeg' %}" alt="food"
+                                            class="photosize">
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
 
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary saveBtn">Save changes</button>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-primary" id="savechange" value="Save changes" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closemodal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 
 
-
-
-
-
-
-
-
-
-    <script src="./table.js"></script>
+        <script src="/static/js/main_category.js"></script>
 </body>
-
-</html>
