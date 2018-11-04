@@ -4,12 +4,14 @@
 import hashlib
 import smtplib
 from email.message import EmailMessage
+from bson.objectid import ObjectId
 
 # Django imports
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import render_to_response
+from django.views.decorators.csrf import csrf_exempt
 
 # Client imports
 from clients.utils.auth import login_required
@@ -19,13 +21,12 @@ def signin_page(request):
     if request.method == "POST":
         email = request.POST.get('account_mail',None)
         password = secreted(request.POST.get('password',None))
-        sign_data = Signup.query({"account_mail":email})
-        if password == sign_data[0]["password"]:
-            request.session["user_id"] = sign_data[0]["account_username"]
+        sign_data = Signup.query({"account_mail":email})[0]
+        if password == sign_data["password"] and sign_data["activate_status"] == "yes":
+            request.session["user_id"] = sign_data["account_username"]
             return render_to_response("layout/index/index_base.html")
     return render(request, "sign/sign_in.html", locals())
 
-@login_required
 def index(request):
     return render_to_response("layout/index/index_base.html")
 
@@ -52,8 +53,9 @@ def signup_page(request):
         return HttpResponse("there is something wrong in ur data!")
     return render(request,"sign/sign_up.html", locals())
 
-def mail_activate(user_email):
+def mail_activate(user_email,token):
     from config import GMAIL_ACCOUNT, GMAIL_PASSWORD
+    print(token)
     with open("mail_content.txt","r") as f:
         # Create a text/plain message
         msg = EmailMessage()
@@ -74,9 +76,18 @@ def mail_activate(user_email):
     except Exception as e:
         print(e) #this for catch error
 
-#TO DO
-#def activate_page(request):
-    
+def activate_page(request,token):
+    try:
+        index = {"_id":ObjectId(token)}
+        query_result = Signup.query(index)
+        if query_result:
+            Signup.update(index, {"activate_status": "yes"})
+            return HttpResponse("activate successfully!")
+        else:
+            return HttpResponse("please check your email!")
+    except Exception as e:
+        print(e)
+        return HttpResponse("PLZ check ur email!")
 
 @login_required
 def main_category(request):
@@ -96,7 +107,6 @@ def main_category(request):
                 Goods.insert(request_content)
             else:
                 Goods.update(index, request_content)
-        #else:
         content_box = """<div class="card border-secondary mb-3 float" style="max-width: 20rem;">
                       <div class = "card-header"> {0}<i class = "fas fa-edit"></i><i class="fas fa-trash-alt"></i>
                       <button type = "button" class = "btn btn-outline-danger floatright" onclick="window.location.href='/goods_table'">
@@ -106,17 +116,26 @@ def main_category(request):
         pc_route_name = {"option1":"main_category_food.jpg","option2":"main_category_goods.jpeg","option3":"main_category_shampoo.jpeg"};
         index = {"username":request.session["user_id"]}
         search_results = list(Goods.get_by(index))
-        #if search_results != []:
         main_cate_content = ""
         for result in search_results:
             main_cate_content += content_box.format(result["cate_text"],pc_route_name[result["cate_img"]])
         return render(request, 'main_category/main_category.html', locals())
     return render(request,'main_category/main_category.html',locals())
 
+#TODO
+@login_required
+@csrf_exempt
 def goods_table(request):
-    if request.method == "GET":
-        print(request.build_absolute_uri())
-        return render(request, 'goods_table/table.html', locals())
+    if request.method == "POST":
+        #checked, request_content = check_signup_content(request)
+        content = request.POST.get("cate_text","")
+        print(content)
+        #if checked == True:
+        #    index = {"cate_text": request_content["cate_text"],"username":request.session["user_id"]}
+
+
+
+    return render(request, 'category_table/goods_table.html', locals())
 
 def secreted(password):
     if password is None:
@@ -138,10 +157,6 @@ def check_signup_content(request):
                 content[key] = secreted(value)
             else:
                 content[key] = value
-    content["activate_status"] = "no"
+    if "account_mail" in content:
+        content["activate_status"] = "no"
     return checked, content
-
-# TODO:
-# Add login_required at utils
-# @login_required
-# def index()
